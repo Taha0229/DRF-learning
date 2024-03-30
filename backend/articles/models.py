@@ -30,6 +30,10 @@ class Article(models.Model):
     def endpoint(self):
         return self.get_absolute_url()
     
+    @property
+    def public(self):
+        return self.make_public
+        
     def is_public(self):
         if self.publish_date is None:
             return False

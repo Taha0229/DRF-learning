@@ -12,11 +12,12 @@ def perform_query(query, **kwargs):
     
     client = get_client()
     individual_tags = [t for t in tags] or []
+    print("index_filters: ", index_filters)
     
     results = client.multiple_queries(
         [
             {"indexName": "cfe_Product", "query": query, 'tagFilters':[tags, individual_tags], 'facetFilters': index_filters},
-            {"indexName": "cfe_Article", "query": query, 'tagFilters':[tags, individual_tags], 'facetFilters': index_filters},
+            {"indexName": "cfe_Article", "query": query, 'tagFilters':[tags, individual_tags], 'facetFilters': index_filters}
         ]
     )
     return results
